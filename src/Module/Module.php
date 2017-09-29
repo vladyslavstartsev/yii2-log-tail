@@ -1,8 +1,7 @@
 <?php
 
-namespace yii\gii;
+namespace VladyslavStartsev\YiiLogTail\Module;
 
-use Yii;
 use yii\base\Application;
 use yii\base\BootstrapInterface;
 use yii\base\Module as BaseModule;
