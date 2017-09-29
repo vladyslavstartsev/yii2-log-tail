@@ -1,14 +1,14 @@
 <?php
 
-namespace VladyslavStartsev\YiiLogTail\Controllers;
+namespace VladyslavStartsev\YiiLogTail\Actions;
 
 use SplFileInfo;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
 use Yii;
-use yii\console\Controller;
+use yii\base\Action;
 
-class LogController extends Controller
+class TailAction extends Action
 {
 
     public $lines;
@@ -20,20 +20,24 @@ class LogController extends Controller
         return ['lines'];
     }
 
-    public function actionTail()
+    /**
+     * Tails your log, was param - number of lines
+     * @param $lines
+     */
+    public function run($lines = 100)
     {
         $logDirectory = Yii::getAlias('@runtime') . '/logs';
         if (!$path = $this->findLatestLogFile($logDirectory)) {
-            $this->stderr("Could not find a log file in `{$logDirectory}`.");
+            echo "Could not find a log file in `{$logDirectory}`." . PHP_EOL;
             return;
         }
 
-        $tailCommand = "tail -f -n {$this->lines} " . escapeshellarg($path);
-        $this->stdout("start tailing {$path}");
+        $tailCommand = "tail -f -n {$lines} " . escapeshellarg($path);
+        echo "start tailing {$path}" . PHP_EOL;
         (new Process($tailCommand))
             ->setTimeout(null)
             ->run(function ($type, $line) {
-                echo $this->stdout($line);
+                echo ($line);
             });
 
     }
