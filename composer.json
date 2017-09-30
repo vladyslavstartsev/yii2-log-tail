@@ -10,7 +10,7 @@
         "development"
     ],
     "type": "yii2-extension",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "homepage": "https://github.com/vladyslavstartsev/yii2-log-tail",
     "authors": [
         {
