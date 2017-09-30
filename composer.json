@@ -1,6 +1,7 @@
 {
     "name": "vladyslavstartsev/yii2-log-tail",
     "description": "Yii2 console command to easily tail the application log",
+    "license": "MIT",
     "keywords": [
         "yii2",
         "tail",
@@ -30,9 +31,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        },
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",
             "bower-asset-library": "vendor/bower"
